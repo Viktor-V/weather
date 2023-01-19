@@ -1,0 +1,6 @@
+services:
+    App\Weather\Domain\Repository\WeatherRepositoryInterface:
+        public: true
+        class: App\Weather\Infrastructure\Repository\DoctrineWeatherRepository
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
