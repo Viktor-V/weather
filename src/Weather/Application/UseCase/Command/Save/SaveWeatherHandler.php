@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Weather\Application\UseCase\Save;
+namespace App\Weather\Application\UseCase\Command\Save;
 
 use App\Weather\Domain\Entity\Weather;
 use App\Weather\Domain\Repository\WeatherRepositoryInterface;

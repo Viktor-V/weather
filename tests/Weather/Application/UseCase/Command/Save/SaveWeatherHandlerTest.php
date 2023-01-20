@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Weather\Application\UseCase\Command\Save;
 
 use App\Tests\TestHelper;
-use App\Weather\Application\UseCase\Save\SaveWeatherCommand;
-use App\Weather\Application\UseCase\Save\SaveWeatherHandler;
+use App\Weather\Application\UseCase\Command\Save\SaveWeatherCommand;
+use App\Weather\Application\UseCase\Command\Save\SaveWeatherHandler;
 use App\Weather\Domain\Entity\Weather;
 use App\Weather\Domain\Repository\WeatherRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
