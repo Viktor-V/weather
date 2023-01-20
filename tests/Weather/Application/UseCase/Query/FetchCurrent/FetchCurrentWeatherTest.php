@@ -28,7 +28,7 @@ class FetchCurrentWeatherTest extends KernelTestCase
         );
     }
 
-    public function testCurrentWeatherNotFound(): void
+    public function testCurrentWeatherFound(): void
     {
         $this->weatherRepository->save(
             new Weather(
@@ -49,7 +49,7 @@ class FetchCurrentWeatherTest extends KernelTestCase
         self::assertEquals($windSpeed, $weather->windSpeed);
     }
 
-    public function testCurrentWeatherFound(): void
+    public function testCurrentWeatherNotFound(): void
     {
         self::assertNull(
             $this->handler->__invoke(new FetchCurrentWeatherQuery('NotSupportedCity'))
