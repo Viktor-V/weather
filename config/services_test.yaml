@@ -3,4 +3,10 @@ services:
         public: true
         class: App\Weather\Infrastructure\Repository\DoctrineWeatherRepository
         arguments:
-            $entityManager: '@doctrine.orm.entity_manager'
+            $entityManager: '@Doctrine\ORM\EntityManagerInterface'
+
+    App\Weather\Domain\Query\WeatherQueryInterface:
+        public: true
+        class: App\Weather\Infrastructure\Query\DoctrineDBALWeatherQuery
+        arguments:
+            $connection: '@Doctrine\DBAL\Connection'
