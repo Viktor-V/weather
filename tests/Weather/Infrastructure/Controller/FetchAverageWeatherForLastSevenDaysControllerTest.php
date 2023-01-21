@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Weather\Infrastructure\Controller;
 
+use App\Tests\ClientTrait;
 use App\Weather\Domain\Entity\Weather;
 use App\Weather\Domain\Repository\WeatherRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -12,9 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FetchAverageWeatherForLastSevenDaysControllerTest extends WebTestCase
 {
+    use ClientTrait;
+
     public function testCurrentWeatherFound(): void
     {
-        $client = static::createClient();
+        $client = $this->createClientWithLoggedInUser();
 
         $currentDate = (new DateTimeImmutable('today midnight'));
 
@@ -73,7 +76,7 @@ class FetchAverageWeatherForLastSevenDaysControllerTest extends WebTestCase
 
     public function testCurrentWeatherNotFound(): void
     {
-        $client = static::createClient();
+        $client = $this->createClientWithLoggedInUser();
 
         $client->request('GET', '/api/weather/last-seven-days', ['city' => 'Riga']);
 
