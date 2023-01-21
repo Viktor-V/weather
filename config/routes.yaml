@@ -1,5 +1,5 @@
-controllers:
+weather:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Weather/Infrastructure/Controller
+        namespace: App\Weather\Infrastructure\Controller
     type: attribute
