@@ -54,6 +54,24 @@ class FetchAverageWeatherForLastSevenDaysTest extends KernelTestCase
             $sumWindSpeed += $windSpeed;
         }
 
+        $this->weatherRepository->save(
+            new Weather(
+                $currentDate->modify('-8 day')->format('Y-m-d H:i:s'),
+                'Riga',
+                10.0,
+                10.0
+            )
+        );
+
+        $this->weatherRepository->save(
+            new Weather(
+                $currentDate->modify('-9 day')->format('Y-m-d H:i:s'),
+                'Riga',
+                7.0,
+                7.0
+            )
+        );
+
         /** @var AverageWeatherDTO $weather */
         $weather = $this->handler->__invoke(new FetchAverageWeatherForLastSevenDaysQuery('Riga'));
 
