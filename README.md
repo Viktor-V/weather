@@ -1,10 +1,14 @@
 ## Dev development
-Clone the project, move to the project folder and run:
+### Step 1: Clone the project
+### Step 2: Move to the project folder 
+### Step 3: Set WEATHERSTACK_API_KEY
+### Step 4: Run
 ```bash
 docker-compose up -d
 ```
 
-* Backend: [https://localhost](https://localhost)
+### Step 5: Visit
+[https://localhost](https://localhost)
 
 ## Result
 
