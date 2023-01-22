@@ -10,14 +10,10 @@ const App = () => {
 
     const [isInternationalSystem, setIsInternationalSystem] = useState(true);
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            store.checkAuth();
-        }
-    }, []);
-
     if (!store.isAuth) {
         return (<LoginForm/>)
+    } else {
+        store.checkAuth();
     }
 
     return (
@@ -25,8 +21,7 @@ const App = () => {
             <button onClick={() => store.getWeather('Riga', false)}>Current weather - Riga</button>
             <button onClick={() => store.getWeather('New York', false)}>Current weather - New York</button>
             <button onClick={() => store.getWeather('Riga', true)}>Average weather last 7 days - Riga</button>
-                <button onClick={() => store.getWeather('New York', true)}>Average weather last 7 days - New York</button>
-
+            <button onClick={() => store.getWeather('New York', true)}>Average weather last 7 days - New York</button>
 
             {isInternationalSystem ? (
                 <button onClick={() => setIsInternationalSystem(false)}>Imperial System</button>

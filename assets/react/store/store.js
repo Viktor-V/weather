@@ -5,7 +5,7 @@ import {API_URL} from "../http";
 import WeatherService from "../services/WeatherService";
 
 export default class Store {
-  isAuth = false;
+  isAuth = !!localStorage.getItem('token');
   weather = null;
   message = null;
 
@@ -30,6 +30,7 @@ export default class Store {
       const response = await AuthService.login(username, password);
 
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       this.setAuth(true);
     } catch (e) {
       console.log(e.response?.data?.message);
@@ -38,16 +39,18 @@ export default class Store {
 
   async logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     this.setAuth(false);
   }
 
   async checkAuth() {
     try {
-      const response = await axios.get(`${API_URL}/login/refresh`, {
-        withCredentials: true
+      const response = await axios.post(`${API_URL}/login/refresh`, {
+        refreshToken: localStorage.getItem('refreshToken')
       });
 
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       this.setAuth(true);
     } catch (e) {
       console.log(e.response?.data?.message);
