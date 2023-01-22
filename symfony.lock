@@ -241,5 +241,8 @@
             "package.json",
             "webpack.config.js"
         ]
+    },
+    "zenstruck/messenger-test": {
+        "version": "v1.5.1"
     }
 }
