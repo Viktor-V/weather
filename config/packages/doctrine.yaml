@@ -18,6 +18,13 @@ doctrine:
                 prefix: 'App\Weather\Domain\Entity'
                 alias: Weather
 
+            RefreshToken:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Security/Infrastructure/Mapping'
+                prefix: 'App\Security\Infrastructure\Entity'
+                alias: RefreshToken
+
 when@test:
     doctrine:
         dbal:

@@ -14,7 +14,7 @@ trait ClientTrait
 
         $client->request(
             'POST',
-            '/api/login_check',
+            '/api/login',
             [],
             [],
             ['CONTENT_TYPE' => 'application/json'],

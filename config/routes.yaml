@@ -1,6 +1,9 @@
 api_login_check:
-    path: /api/login_check
+    path: /api/login
     
+api_login_refresh:
+    path: /api/login/refresh
+
 weather:
     resource:
         path: ../src/Weather/Infrastructure/Controller
