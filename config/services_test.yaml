@@ -10,3 +10,7 @@ services:
         class: App\Weather\Infrastructure\Query\DoctrineDBALWeatherQuery
         arguments:
             $connection: '@Doctrine\DBAL\Connection'
+
+    App\Weather\Infrastructure\Service\ObtainWeatherAPI:
+        public: true
+        class: App\Tests\Stub\ObtainWeatherAPIStub

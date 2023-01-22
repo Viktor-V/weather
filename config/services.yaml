@@ -20,5 +20,15 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Weather\Infrastructure\Command\ObtainWeatherCommand:
+        arguments:
+            $cities: ['Riga', 'New York']
+
+    App\Weather\Application\UseCase\Event\Obtain\ObtainWeatherHandler:
+        tags:
+            -   name: messenger.message_handler
+                handles: App\Weather\Application\UseCase\Event\Obtain\ObtainWeatherEvent
+
+    App\Weather\Infrastructure\Service\ObtainWeatherAPI:
+        arguments:
+            $accessKey: '%env(string:WEATHERSTACK_API_KEY)%'
