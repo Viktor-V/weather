@@ -94,6 +94,12 @@ RUN set -eux; \
 		chmod +x bin/console; sync; \
     fi
 
+# Worker
+FROM app_php AS app_messenger
+WORKDIR /srv/app
+
+ENTRYPOINT ["docker-entrypoint"]
+
 # Dev image
 FROM app_php AS app_php_dev
 

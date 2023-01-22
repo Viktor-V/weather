@@ -24,6 +24,20 @@ services:
       MERCURE_PUBLIC_URL: https://${SERVER_NAME:-localhost}/.well-known/mercure
       MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
 
+  messenger:
+    build:
+      context: .
+      target: app_messenger
+    command: 'sh -c "php bin/console messenger:consume async"'
+    healthcheck:
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    depends_on:
+      - php
+
   caddy:
     build:
       context: .
@@ -71,6 +85,12 @@ services:
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
 
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_VERSION:-3.9.13}-management
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_log:/var/log/rabbitmq
+
 volumes:
   php_socket:
   caddy_data:
@@ -81,3 +101,5 @@ volumes:
 ###> doctrine/doctrine-bundle ###
   db-data:
 ###< doctrine/doctrine-bundle ###
+  rabbitmq_data:
+  rabbitmq_log:
