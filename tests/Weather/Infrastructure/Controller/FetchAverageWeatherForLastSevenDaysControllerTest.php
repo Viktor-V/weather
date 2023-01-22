@@ -65,8 +65,6 @@ class FetchAverageWeatherForLastSevenDaysControllerTest extends WebTestCase
 
         $responseData = json_decode($client->getResponse()->getContent(), true);
 
-        dump($responseData);
-
         self::assertResponseIsSuccessful();
         self::assertNotNull($responseData);
         self::assertEquals('Riga', $responseData['averageWeather']['city']);
