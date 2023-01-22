@@ -22,6 +22,6 @@ class CurrentWeatherController extends AbstractController
             return $this->json(['message' => 'Not Found!'], Response::HTTP_NOT_FOUND);
         }
 
-        return $this->json(['currentWeather' => $weather]);
+        return $this->json(['weather' => $weather]);
     }
 }

@@ -22,6 +22,6 @@ class AverageWeatherForLastSevenDaysController extends AbstractController
             return $this->json(['message' => 'Not Found!'], Response::HTTP_NOT_FOUND);
         }
 
-        return $this->json(['averageWeather' => $weather]);
+        return $this->json(['weather' => $weather]);
     }
 }

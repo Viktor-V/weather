@@ -67,9 +67,9 @@ class FetchAverageWeatherForLastSevenDaysControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertNotNull($responseData);
-        self::assertEquals('Riga', $responseData['averageWeather']['city']);
-        self::assertEquals(round($sumTemperature / $days, 2), $responseData['averageWeather']['temperature']);
-        self::assertEquals(round($sumWindSpeed / $days, 2), $responseData['averageWeather']['windSpeed']);
+        self::assertEquals('Riga', $responseData['weather']['city']);
+        self::assertEquals(round($sumTemperature / $days, 2), $responseData['weather']['temperature']);
+        self::assertEquals(round($sumWindSpeed / $days, 2), $responseData['weather']['windSpeed']);
     }
 
     public function testCurrentWeatherNotFound(): void

@@ -34,10 +34,10 @@ class CurrentWeatherControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertNotNull($responseData);
-        self::assertEquals($date, $responseData['currentWeather']['date']);
-        self::assertEquals($city, $responseData['currentWeather']['city']);
-        self::assertEquals($temperature, $responseData['currentWeather']['temperature']);
-        self::assertEquals($windSpeed, $responseData['currentWeather']['windSpeed']);
+        self::assertEquals($date, $responseData['weather']['date']);
+        self::assertEquals($city, $responseData['weather']['city']);
+        self::assertEquals($temperature, $responseData['weather']['temperature']);
+        self::assertEquals($windSpeed, $responseData['weather']['windSpeed']);
     }
 
     public function testCurrentWeatherNotFound(): void
