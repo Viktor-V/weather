@@ -111,6 +111,21 @@ RUN set -eux; \
 
 RUN rm -f .env.local.php
 
+# Node image
+FROM node:19-alpine AS app_node
+
+WORKDIR /srv/app
+
+COPY --from=app_php /srv/app/vendor ./vendor
+COPY package.json yarn.lock ./
+
+RUN yarn install
+
+COPY assets assets/
+COPY webpack.config.js ./
+
+RUN yarn run build
+
 # Build Caddy with the Mercure and Vulcain modules
 FROM caddy:2.6-builder-alpine AS app_caddy_builder
 

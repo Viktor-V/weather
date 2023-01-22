@@ -9,6 +9,10 @@ if [ $# -gt 0 ]; then
         shift 1
         docker-compose exec php composer "$@"
         docker-compose exec php chown -R $(id -u):$(id -g) .
+    elif [ "$1" == "yarn" ]; then
+        shift 1
+        docker-compose exec node yarn "$@"
+        docker-compose exec php chown -R $(id -u):$(id -g) .
     elif [ "$1" == "test" ]; then
         shift 1
         docker-compose exec php php -d memory_limit=-1 ./bin/console lexik:jwt:generate-keypair --env=test --skip-if-exists --quiet

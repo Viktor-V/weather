@@ -31,3 +31,13 @@ services:
     ports:
       - "5432"
 ###< doctrine/doctrine-bundle ###
+
+  node:
+    build:
+      context: .
+      target: app_node
+    command: 'sh -c "yarn install; yarn run watch"'
+    environment:
+      NODE_END: "${NODE_ENV:-development}"
+    volumes:
+      - ./:/srv/app
