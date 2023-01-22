@@ -9,8 +9,8 @@ const WeatherDataOnInternationalSystem = (props) => {
         <div>
             <ul>
                 <li>City: {props.weather.city}</li>
-                <li>Temperature: {temperature} °F</li>
-                <li>Wind speed: {windSpeed} ft/s</li>
+                <li>Temperature: {temperature.toFixed(2)} °F</li>
+                <li>Wind speed: {windSpeed.toFixed(2)} ft/s</li>
             </ul>
         </div>
     );
