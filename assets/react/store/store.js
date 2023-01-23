@@ -63,13 +63,14 @@ export default class Store {
         ? await WeatherService.fetchAverageWeatherForLastSevenDays(city)
         : await WeatherService.fetchWeather(city);
 
-      this.setWeather(response.data.weather);
-      this.setMessage(null);
-    } catch (e) {
-      if (e.response.status === 404) {
-        this.setMessage(e.response.data.message);
+      if (response.data.weather !== null) {
+        this.setWeather(response.data.weather);
+        this.setMessage(null);
+      } else {
+        this.setWeather(null);
+        this.setMessage('Not found!');
       }
-
+    } catch (e) {
       console.log(e);
     }
   }

@@ -18,10 +18,6 @@ class AverageWeatherForLastSevenDaysController extends AbstractController
     {
         $weather = $handler(new FetchAverageWeatherForLastSevenDaysQuery((string) $request->query->get('city')));
 
-        if (!$weather) {
-            return $this->json(['message' => 'Not Found!'], Response::HTTP_NOT_FOUND);
-        }
-
         return $this->json(['weather' => $weather]);
     }
 }

@@ -46,6 +46,9 @@ class CurrentWeatherControllerTest extends WebTestCase
 
         $client->request('GET', '/api/weather/current', ['city' => 'Riga']);
 
-        self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+        $responseData = json_decode($client->getResponse()->getContent(), true);
+
+        self::assertResponseIsSuccessful();
+        self::assertNull($responseData['weather']);
     }
 }
