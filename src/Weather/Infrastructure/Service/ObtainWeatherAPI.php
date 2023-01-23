@@ -25,8 +25,6 @@ class ObtainWeatherAPI implements ObtainWeatherAPIInterface
 
         $weatherData = $response->toArray();
 
-        dump($weatherData);
-
         return new SaveWeatherCommand(
             (new DateTimeImmutable('today midnight'))->format('Y-m-d H:i:s'),
             $city,
